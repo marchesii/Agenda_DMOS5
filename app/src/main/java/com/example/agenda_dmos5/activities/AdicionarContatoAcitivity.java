@@ -11,16 +11,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.agenda_dmos5.R;
+import com.example.agenda_dmos5.constants.Constantes;
 import com.example.agenda_dmos5.control.ContatoDAO;
 import com.example.agenda_dmos5.model.Contato;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 
 public class AdicionarContatoAcitivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText nomeEditText;
     private EditText telefone_FixoEditText;
     private EditText telefone_CelularEditText;
+    private String usuario;
     private Button salvarButton;
     private ContatoDAO mContatoDAO;
 
@@ -29,6 +29,10 @@ public class AdicionarContatoAcitivity extends AppCompatActivity implements View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adicionar_contato_acitivity);
 
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            usuario = (bundle.get(Constantes.KEY_USER).toString());
+        }
         nomeEditText = findViewById(R.id.edittext_nome);
         telefone_FixoEditText = findViewById(R.id.edittext_telefone_fixo);
         telefone_CelularEditText = findViewById(R.id.edittext_telefone_celular);
@@ -36,6 +40,8 @@ public class AdicionarContatoAcitivity extends AppCompatActivity implements View
         mContatoDAO = new ContatoDAO(this);
 
         salvarButton.setOnClickListener(this);
+
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -66,10 +72,11 @@ public class AdicionarContatoAcitivity extends AppCompatActivity implements View
         telefone_fixo = telefone_FixoEditText.getText().toString();
         telefone_celular = telefone_CelularEditText.getText().toString();
 
-        if(nome.isEmpty() || telefone_fixo.isEmpty() || telefone_celular.isEmpty()){
-            Toast.makeText(this, R.string.erro_empty_fields, Toast.LENGTH_SHORT);
+        if(nome.isEmpty() || telefone_fixo.isEmpty() || telefone_celular.isEmpty() || usuario.isEmpty()){
+            Toast.makeText(this, R.string.erro_preenchimento, Toast.LENGTH_SHORT);
         }else{
-                Contato novoContato = new Contato(nome, telefone_fixo, telefone_celular);
+
+                Contato novoContato = new Contato(nome, telefone_fixo, telefone_celular, usuario);
                 mContatoDAO.add(novoContato);
                 finalizar(true);
         }

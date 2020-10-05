@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/login_activity"
+    tools:context=".activities.LoginActivity">
+
+    <ImageView
+        android:id="@+id/user_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_account_box"
+        />
+
+    <EditText
+        android:id="@+id/email_login_usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_icon"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Email"
+        android:textSize="25sp"
+        />
+
+    <EditText
+         android:id="@+id/senha_login_usuario"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/email_login_usuario"
+         android:layout_centerHorizontal="true"
+         android:hint="Senha"
+         android:inputType="numberPassword"
+         android:textSize="25sp"
+         />
+    <Button
+        android:id="@+id/logar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/senha_login_usuario"
+        android:layout_alignStart="@+id/registrar_button"
+        android:layout_alignEnd="@+id/registrar_button"
+        android:layout_centerHorizontal="true"
+        android:hint="Logar"
+        android:textSize="25sp"
+        />
+
+    <Button
+        android:id="@+id/registrar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logar_button"
+        android:layout_centerHorizontal="true"
+        android:hint="Registrar"
+        android:textSize="25sp"/>
+
+    <CheckBox
+        android:id="@+id/lembrar_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/senha_login_usuario"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/logar_button"
+        android:hint="Lembrar"
+        />
+
+
+
+
+</RelativeLayout>

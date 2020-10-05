@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Agenda_DMOS5</string>
     <string name="erro_empty_fields">Preencha os campos</string>
+    <string name="erro_preenchimento">Preencha todos os campos com dados válidos</string>
+    <string name="pref_login"> </string>
+    <string name="pref_key">login_senha</string>
+    <string name="pref_senha"> </string>
 </resources>

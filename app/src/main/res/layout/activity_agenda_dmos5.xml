@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".activities.Agenda_DMOS5">
 
-    <ListView
-        android:id="@+id/listview_contatos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_contatos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
     <TextView
         android:id="@+id/textview_sem_dados"
         android:layout_width="wrap_content"

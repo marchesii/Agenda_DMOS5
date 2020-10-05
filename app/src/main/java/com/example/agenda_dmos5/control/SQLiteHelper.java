@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class SQLiteHelper extends SQLiteOpenHelper {
 
     //constantes do bd
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "meus_contatos.db";
 
     //Constantes da tabela Contato
@@ -17,6 +17,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NOME = "nome";
     public static final String COLUMN_TELEFONE_FIXO = "telefone_fixo";
     public static final String COLUMN_TELEFONE_CEL = "telefone_celular";
+    public static final String COLUMN_USUARIO_CONTATO = "usuario";
+
+    //Constantes da tabela Usuário
+    public static final String TABLE_NAME_USUARIO = "usuarios";
+    public static final String COLUMN_EMAIL_USUARIO = "email";
+    public static final String COLUMN_SENHA_USUARIO = "senha";
 
 
     public SQLiteHelper(@Nullable Context context) {
@@ -25,6 +31,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        sqLiteDatabase.setVersion(1);
         String sql;
 
         sql = "CREATE TABLE " + TABLE_NAME_CONTATOS + "(";
@@ -33,10 +40,26 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sql += COLUMN_TELEFONE_CEL + " TEXT NOT NULL);";
 
         sqLiteDatabase.execSQL(sql);
+
+
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+
+        if(oldVersion == 1) {
+            String sql;
+            sql = "AlTER TABLE " + TABLE_NAME_CONTATOS + " ADD COLUMN " + COLUMN_USUARIO_CONTATO + " TEXT";
+            sqLiteDatabase.execSQL(sql);
+
+            sql = "CREATE TABLE " + TABLE_NAME_USUARIO + "(";
+            sql += COLUMN_EMAIL_USUARIO + " TEXT NOT NULL, ";
+            sql += COLUMN_SENHA_USUARIO + " TEXT NOT NULL, ";
+            sql += "PRIMARY KEY (" + COLUMN_EMAIL_USUARIO + ") );";
+            sqLiteDatabase.execSQL(sql);
+
+        }
 
     }
+
 }

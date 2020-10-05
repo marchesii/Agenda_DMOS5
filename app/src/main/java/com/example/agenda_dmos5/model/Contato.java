@@ -5,8 +5,16 @@ public class Contato {
     private String nome;
     private String telefone_fixo;
     private String telefone_celular;
+    private String usuario;
 
 
+
+    public Contato(String nome, String telefone_fixo, String telefone_celular, String usuario){
+        this.nome = nome;
+        this.telefone_fixo = telefone_fixo;
+        this.telefone_celular = telefone_celular;
+        this.usuario = usuario;
+    }
 
     public Contato(String nome, String telefone_fixo, String telefone_celular) {
         this.nome = nome;
@@ -37,6 +45,10 @@ public class Contato {
     public void setTelefone_celular(String telefone){
         this.telefone_celular = telefone;
     }
+
+    public String getUsuario() {return usuario;}
+
+    public void setUsuario(String usuario) {this.usuario = usuario;}
 
 
     @Override
